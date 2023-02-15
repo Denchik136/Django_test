@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="{% url 'thanks_page' %}" method="POST">
+      {% csrf_token %}
+      {{form}}
+      <button tupe="submit">Отправить</button>
+    </form>
+
+    {% if object_list %}
+      {% for obj in object_list %}
+        <h3>{{ obj.id }}</h3>
+        <h3>{{ obj.order_name }}</h3>
+        <h3>{{ obj.order_phone }}</h3>
+        <h3>{{ obj.order_dt }}</h3>
+      {% endfor %}
+    {% else %}
+      <h3>ID</h3>
+      <h3>Name</h3>
+      <h3>Phone</h3>
+      <h3>Date</h3>
+      <h4></h4>
+    {% endif %}
+  </body>
+</html>
